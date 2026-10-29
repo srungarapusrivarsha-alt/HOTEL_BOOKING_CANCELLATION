@@ -5,7 +5,7 @@ from xgboost import XGBClassifier
 st.title("HOTEL BOOKING CANCELLATION")
 data=pd.read_csv(r"C:\Users\sriva\Desktop\Hotel_Booking_Cancellation\ML_REPORT")
 data['is_cancelled']=data['is_cancelled'].map({"No":0,"Yes":1})
-
+st.write(data['is_cancelled'].value_counts())
 x=data[['Hotel_Type','Lead_Time_Days','Room_Type','Previous_Bookings', 'Previous_Cancellations', 'Booking_Channel', 'Deposit_Type']]
 
 x['Hotel_Type']=x['Hotel_Type'].map({'Unknown':0,'City Hotel':1, 'Resort Hotel':2})
