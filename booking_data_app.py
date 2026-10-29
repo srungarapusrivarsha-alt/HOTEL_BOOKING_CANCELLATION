@@ -2,7 +2,6 @@ import pandas as pd
 import streamlit as st
 from sklearn.model_selection import train_test_split
 from xgboost import XGBClassifier
-st.title("HOTEL BOOKING CANCELLATION")
 data=pd.read_csv("ML_REPORT.csv")
 data['is_cancelled']=data['is_cancelled'].map({"No":0,"Yes":1})
 x=data[['Hotel_Type','Lead_Time_Days','Room_Type','Previous_Bookings', 'Previous_Cancellations', 'Booking_Channel', 'Deposit_Type']]
@@ -20,7 +19,7 @@ x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.20,random_state=4
 model=XGBClassifier(max_depth=3,n_estimators=550,learning_rate=0.50)
 
 model.fit(x_train,y_train)
-
+st.title("HOTEL BOOKING CANCELLATION")
 hotel=st.number_input("enter hotel type Unknown-0,City Hotel-1, Resort Hotel-2",step=1)
 stay_days=st.number_input("enter lead time days",step=1)
 room_type=st.number_input("enter room type Unknown-0,Standard-1,Suite-2,Deluxe-3",step=1)
